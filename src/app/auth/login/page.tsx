@@ -8,11 +8,11 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
-
+  const base_url = process.env.NEXT_PLUBLIC_API_URL
   const handleLogin = async () => {
     setError('')
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(base_url+'/api/auth/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },

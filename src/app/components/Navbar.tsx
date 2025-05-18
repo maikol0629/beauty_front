@@ -56,7 +56,7 @@ export default function Navbar({ isAuthenticated = false, userName = "", userRol
                 <Link href="/contact" className="text-gray-600 hover:text-primary px-3 py-2">
                   Contacto
                 </Link>
-                <Button href="/login" variant="outline" size="sm">
+                <Button href="/auth/login" variant="outline" size="sm">
                   Iniciar Sesión
                 </Button>
                 <Button href="/register" variant="primary" size="sm">

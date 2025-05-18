@@ -1,50 +1,42 @@
-// LandingPage.tsx (versión modificada)
 import Link from 'next/link';
 import { ScissorsIcon, UserIcon, CalendarIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import '@/app/globals.css';
+import Navbar from './components/Navbar';
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen">
-      {/* Navbar */}
-      <nav className="navbar">
-        <div className="container">
-          <div className="flex justify-between items-center">
-            <Link href="/login" className="text-gray-600 hover:text-purple-600">
-              Iniciar Sesión
-            </Link>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen flex flex-col">
+
+      {/* Navbar*/}
+      <Navbar/>
 
       {/* Hero Section */}
-      <div className="container">
-        <div className="hero-section">
-          <h1 className="hero-heading">Transforma tu experiencia de belleza</h1>
+      <section className="flex-grow flex items-center bg-[var(--color-light)]">
+        <div className="container hero-section">
+          <h1 className="hero-heading">
+            Transforma tu experiencia de belleza
+          </h1>
           <p className="hero-text">
             Conectamos estilistas profesionales con clientes que buscan servicios de calidad
           </p>
-          
-          <div className="flex justify-center gap-6 mb-16">
-            <Link
-              href="/auth/register/stylist"
-              className="button button-primary"
-            >
-              <ScissorsIcon className="icon-white h-5 w-5 mr-2" />
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
+            <Link href="/auth/register/stylist" className="button button-primary text-sm sm:text-base">
+              <ScissorsIcon className="h-5 w-5 mr-2" />
               Soy Estilista
             </Link>
-            <Link
-              href="/auth/register/client"
-              className="button button-secondary"
-            >
-              <UserIcon className="icon-white h-5 w-5 mr-2" />
+            <Link href="/auth/register/client" className="button button-secondary text-sm sm:text-base">
+              <UserIcon className="h-5 w-5 mr-2" />
               Soy Cliente
             </Link>
           </div>
         </div>
+      </section>
 
-        {/* Beneficios */}
+      {/* Beneficios */}
+      <section className="container">
         <div className="benefits-grid">
-          {/* Para Estilistas */}
+          {/* Estilistas */}
           <div className="benefit-card">
             <h2 className="benefit-title">
               <SparklesIcon className="icon-purple h-6 w-6 mr-2" />
@@ -52,24 +44,31 @@ export default function LandingPage() {
             </h2>
             <ul className="space-y-4">
               <BenefitItem icon={CalendarIcon} title="Gestión de Citas">
-                Organiza y controla tu agenda de manera eficiente
+                Organiza y controla tu agenda de manera eficiente.
               </BenefitItem>
-              {/* ... otros items */}
+              <BenefitItem icon={UserIcon} title="Clientes Frecuentes">
+                Crea tu cartera de clientes y fidelízalos fácilmente.
+              </BenefitItem>
             </ul>
           </div>
 
-          {/* Para Clientes */}
+          {/* Clientes */}
           <div className="benefit-card">
             <h2 className="benefit-title">
               <SparklesIcon className="icon-pink h-6 w-6 mr-2" />
               Para Clientes
             </h2>
             <ul className="space-y-4">
-              {/* ... items */}
+              <BenefitItem icon={CalendarIcon} title="Reserva Rápida">
+                Encuentra disponibilidad inmediata con tu estilista ideal.
+              </BenefitItem>
+              <BenefitItem icon={ScissorsIcon} title="Variedad de Servicios">
+                Elige entre cortes, color, peinados y mucho más.
+              </BenefitItem>
             </ul>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Footer */}
       <footer className="footer">
@@ -81,12 +80,11 @@ export default function LandingPage() {
   );
 }
 
-// BenefitItem component manteniendo la lógica pero usando las nuevas clases
 function BenefitItem({ icon: Icon, title, children }: { icon: any; title: string; children: React.ReactNode }) {
   return (
     <li className="benefit-item">
       <div className="benefit-icon">
-        <Icon className="icon-purple" />
+        <Icon className="h-6 w-6 text-[var(--color-primary)]" />
       </div>
       <div className="benefit-content">
         <h3 className="benefit-item-title">{title}</h3>
